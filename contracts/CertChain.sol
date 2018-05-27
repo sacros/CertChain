@@ -5,17 +5,17 @@ contract CertChain {
 
     // Structs
     struct Certificate {
-        bytes ipfsHash;
+        string ipfsHash;
         uint timeOfIssue;
         address issuer;
         address recipient;
     }
 
     // Mappings
-    mapping(bytes => address) issuerOfCertificate;
-    mapping(address => bytes) issuer;
-    mapping(address => bytes) recipient;
-    mapping(bytes => address[]) allRecipientOfCertificate;
+    mapping(string => address) issuerOfCertificate;
+    mapping(address => string) issuer;
+    mapping(address => string) recipient;
+    mapping(string => address[]) allRecipientOfCertificate;
     mapping(uint=>Certificate) certificateIdentifier;
     mapping(address => uint[]) recipientCertificates;
     mapping(address => uint[]) issuerCertificates;
@@ -23,33 +23,33 @@ contract CertChain {
     mapping(address => bool) isRecipient;
 
     // Events
-    event IssuerRegistered(address indexed issuer, bytes indexed IPFS_hash);
-    event RecipientRegistered(address indexed recipient, bytes indexed IPFS_hash);
-    event CertificateRegistered(address indexed issuer, bytes IPFS_hash);
+    event IssuerRegistered(address indexed issuer, string indexed IPFS_hash);
+    event RecipientRegistered(address indexed recipient, string indexed IPFS_hash);
+    event CertificateRegistered(address indexed issuer, string IPFS_hash);
     event CertificateIssued(uint indexed certificate, address indexed issuer, address indexed recipient);
 
     // Functions
-    function registerIssuer(bytes IPFS_hash) public {
+    function registerIssuer(string IPFS_hash) public {
         require((isIssuer[msg.sender] == false), "Issuer already registered");
         issuer[msg.sender] = IPFS_hash;
         isIssuer[msg.sender] = true;
         emit IssuerRegistered(msg.sender, IPFS_hash);
     }
 
-    function registerRecipient(bytes IPFS_hash) public {
+    function registerRecipient(string IPFS_hash) public {
         require(isRecipient[msg.sender] == false, "Recipient already registered");
         recipient[msg.sender] = IPFS_hash;
         isRecipient[msg.sender] = true;
         emit RecipientRegistered(msg.sender, IPFS_hash);
     }
 
-    function registerCertificate(bytes IPFS_hash) public {
+    function registerCertificate(string IPFS_hash) public {
         require(isIssuer[msg.sender] == true, "Issuer not registered to register a certificate");
         issuerOfCertificate[IPFS_hash] = msg.sender;
         emit CertificateRegistered(msg.sender, IPFS_hash);
     }
 
-    function issueCertificate(address _recipient, bytes certificate_hash) public {
+    function issueCertificate(address _recipient, string certificate_hash) public {
         require(isIssuer[msg.sender] == true, "Issuer not registered to register a certificate");
         require(isRecipient[_recipient] == true, "Recipient not registered to be issued a certificate");
         require(issuerOfCertificate[certificate_hash] == msg.sender, "Issuer not registered to issue this certificate");
@@ -66,19 +66,19 @@ contract CertChain {
         emit CertificateIssued(id, msg.sender, _recipient);
     }
 
-    function getIssuerOfCertificate(bytes IPFS_hash) public view returns (address) {
+    function getIssuerOfCertificate(string IPFS_hash) public view returns (address) {
         return issuerOfCertificate[IPFS_hash];
     }
 
-    function getIssuer(address _issuer) public view returns (bytes) {
+    function getIssuer(address _issuer) public view returns (string) {
         return issuer[_issuer];
     }
 
-    function getRecipient(address _recipient) public view returns (bytes) {
+    function getRecipient(address _recipient) public view returns (string) {
         return recipient[_recipient];
     }
 
-    function getAllRecipientOfCertificate(bytes IPFS_hash) public view returns (address[]) {
+    function getAllRecipientOfCertificate(string IPFS_hash) public view returns (address[]) {
         return allRecipientOfCertificate[IPFS_hash];
     }
 
@@ -90,7 +90,7 @@ contract CertChain {
         return issuerCertificates[_issuer];
     }
 
-    function getCertificateIdentifier(uint _id) public view returns (bytes, uint, address, address){
+    function getCertificateIdentifier(uint _id) public view returns (string, uint, address, address){
         Certificate memory cert = certificateIdentifier[_id];
         return (cert.ipfsHash, cert.timeOfIssue, cert.issuer, cert.recipient);
     }
