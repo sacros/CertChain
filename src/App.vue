@@ -10,11 +10,8 @@
       </tr>
       </table>
     </header>
-    <h1>Certificate Management</h1>
-    <!-- <img src="./assets/logo.png"> -->
     <router-view></router-view>
-    <footer>Copyright © 2016 North Shore Technologies, Inc.</footer>
-    <!-- <footer>Copyright © sacros™ ALL RIGHTS ~UN~RESERVED</footer> -->
+    <footer>Copyright © 2018 North Shore Technologies, Inc.</footer>
   </div>
 </template>
 
@@ -35,11 +32,14 @@ table {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 48px;
+  width: 100%;
+  height: 100%;
 }
 footer {
   margin-top: 20px;
   /* background: #42b983; */
+  background: #aaf8e7;
   background: #2c3e50;
   color: white;
   padding:10px;
@@ -53,29 +53,15 @@ footer {
   z-index: 100;
 }
 header {
-  /* margin-top: 20px; */
-  /* background: #42b983; */
   background: #2c3e50;
   color: white;
   padding: 10px;
-  /* position: fixed; */
   width: 100%;
   top: 0;
   position: fixed;
   height: auto;
   width: 100%;
   z-index: 100;
-  /* text-align: center; */
   align-content: center;
-  /* position: fixed;
-  height: auto;
-  width: 100%;
-  z-index: 100; */
 }
-h1 {
-  padding-top: 100px;
-  color: #2e7a58;
-  font-size: 80px;
-}
-
 </style>

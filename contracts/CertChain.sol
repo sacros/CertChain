@@ -23,8 +23,8 @@ contract CertChain {
     mapping(address => bool) isRecipient;
 
     // Events
-    event IssuerRegistered(address indexed issuer, string indexed IPFS_hash);
-    event RecipientRegistered(address indexed recipient, string indexed IPFS_hash);
+    event IssuerRegistered(address indexed issuer, string IPFS_hash);
+    event RecipientRegistered(address indexed recipient, string IPFS_hash);
     event CertificateRegistered(address indexed issuer, string IPFS_hash);
     event CertificateIssued(uint indexed certificate, address indexed issuer, address indexed recipient);
 
