@@ -16,7 +16,7 @@ contract CertChain {
     mapping(address => string) issuer;
     mapping(address => string) recipient;
     mapping(string => address[]) allRecipientOfCertificate;
-    mapping(uint=>Certificate) certificateIdentifier;
+    mapping(uint => Certificate) certificateIdentifier;
     mapping(address => uint[]) recipientCertificates;
     mapping(address => uint[]) issuerCertificates;
     mapping(address => bool) isIssuer;
