@@ -1,7 +1,7 @@
 <template>
   <div id="outer">
     <span id="h1">CERT(ch)AIN - </span><span id="h2">Certificate Management</span>
-    <div id="inner" style="padding-top: 50px;"><img src="/static/CertChain_big.png"></div>
+    <div id="inner" style="padding-top: 50px;"><img src="/static/cert.png"></div>
     <div id="inner" style="margin-top:9%">
       <p>Storing certificates on blockchain.</p>
       <p>CertChain uses Ethereum blockchain to keep a record of all your certificates, and makes them permanent.</p><br>
