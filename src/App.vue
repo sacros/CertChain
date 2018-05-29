@@ -6,7 +6,7 @@
           <td><router-link to="/" style="color: #58dba0;">Home Page</router-link></td>
           <td><router-link to="/issuerPage" style="color: #58dba0;">Issuer Page</router-link></td>
           <td><router-link to="/recipientPage" style="color: #58dba0;">Recipient Page</router-link></td>
-          <td><router-link to="/events" style="color: #58dba0;">Events</router-link></td>
+          <td><router-link to="/eventsPage" style="color: #58dba0;">Events</router-link></td>
       </tr>
       </table>
     </header>
@@ -63,5 +63,11 @@ header {
   width: 100%;
   z-index: 100;
   align-content: center;
+}
+button {
+  padding:5px;
+}
+input {
+  padding:5px;
 }
 </style>

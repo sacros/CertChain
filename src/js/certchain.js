@@ -188,14 +188,90 @@ const CertChain = {
         reject(err)
       })
     })
-  }
+  },
 
   // Events
 
-  // IssuerRegistered
-  // RecipientRegistered
-  // CertificateRegistered
-  // CertificateIssued
+  eventIssuerRegistered: function (address) {
+    let self = this
+    return new Promise((resolve, reject) => {
+      console.log('at eventIssuerRegistered')
+      let issuerRegisteredEvent = self.instance.IssuerRegistered({issuer: address}, {fromBlock: 0, toBlock: 'latest'})
+      issuerRegisteredEvent.get((err, res) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(res)
+          console.log(res)
+        }
+      })
+    })
+  },
+  eventRecipientRegistered: function (address) {
+    let self = this
+    return new Promise((resolve, reject) => {
+      let recipientRegisteredEvent = self.instance.RecipientRegistered({recipient: address}, {fromBlock: 0, toBlock: 'latest'})
+      recipientRegisteredEvent.get((err, res) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  },
+  eventCertificateRegistered: function (address) {
+    let self = this
+    return new Promise((resolve, reject) => {
+      let certificateRegisteredEvent = self.instance.CertificateRegistered({issuer: address}, {fromBlock: 0, toBlock: 'latest'})
+      certificateRegisteredEvent.get((err, res) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  },
+  eventCertificateIssuedByCertificate: function (id) {
+    let self = this
+    return new Promise((resolve, reject) => {
+      let eventCertificateIssuedByCertificateEvent = self.instance.CertificateIssued({certificate: id}, {fromBlock: 0, toBlock: 'latest'})
+      eventCertificateIssuedByCertificateEvent.get((err, res) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  },
+  eventCertificateIssuedByIssuer: function (address) {
+    let self = this
+    return new Promise((resolve, reject) => {
+      let eventCertificateIssuedByIssuerEvent = self.instance.CertificateIssued({issuer: address}, {fromBlock: 0, toBlock: 'latest'})
+      eventCertificateIssuedByIssuerEvent.get((err, res) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  },
+  eventCertificateIssuedByRecipient: function (address) {
+    let self = this
+    return new Promise((resolve, reject) => {
+      let eventCertificateIssuedByRecipientEvent = self.instance.CertificateIssued({recipient: address}, {fromBlock: 0, toBlock: 'latest'})
+      eventCertificateIssuedByRecipientEvent.get((err, res) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  }
 }
 
 export default CertChain

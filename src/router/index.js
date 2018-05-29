@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import IssuerPage from '@/components/IssuerPage'
 import RecipientPage from '@/components/RecipientPage'
+import EventsPage from '@/components/EventsPage'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/recipientPage',
       name: 'recipientPage',
       component: RecipientPage
+    },
+    {
+      path: '/EventsPage',
+      name: 'eventsPage',
+      component: EventsPage
     }
   ]
 })

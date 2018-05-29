@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-top:18%">
+    <div style="margin-top:18%, padding-bottom:50px;">
         <div v-if="is_registered===''">
             <h1>You are not a registered recipient</h1>
             <h1>Register here..</h1>
@@ -13,21 +13,21 @@
         <div v-else>
             <h1>View your certificates</h1>
             <button @click="getRecipientCertificates">Get All Certificates</button>
-            <span v-if="data_getRecipientCertificates != []">{{data_getRecipientCertificates}}</span><br><br>
+            <br><span v-if="data_getRecipientCertificates != []">{{data_getRecipientCertificates}}</span><br><br>
             <button @click="getProfileDetails">Get Your Details</button>
-            <span v-if="data_getProfileDetails">{{data_getProfileDetails | details}}</span><br><br>
+            <br><span v-if="data_getProfileDetails">{{data_getProfileDetails | details}}</span><br><br>
 
             <input v-model="certID" placeholder="Enter certificate id"/>
             <button @click="getCertificateIdentifier">Get Certificate Details</button>
-            <span v-if="data_getCertificateIdentifier">{{data_getCertificateIdentifier}}</span><br><br>
+            <br><span v-if="data_getCertificateIdentifier">{{data_getCertificateIdentifier}}</span><br><br>
 
             <input v-model="address_issuer" placeholder="Enter address of issuer"/>
             <button @click="getIssuer">Get Issuer Details</button>
-            <span v-if="data_getIssuer">{{data_getIssuer}}</span><br><br>
+            <br><span v-if="data_getIssuer">{{data_getIssuer}}</span><br><br>
 
             <input v-model="hash_contract" placeholder="Enter hash of certificate"/>
             <button @click="getIssuerOfCertificate">Get Issuer of certificate</button>
-            <span v-if="data_getIssuerOfCertificate">{{data_getIssuerOfCertificate}}</span><br><br>
+            <br><span v-if="data_getIssuerOfCertificate">{{data_getIssuerOfCertificate}}</span><br><br>
         </div>
     </div>
 </template>
