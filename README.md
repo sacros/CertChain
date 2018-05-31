@@ -101,3 +101,30 @@ Our system tracks these events:
 2.	A feature of revoking a certificate can be added which can also be used for time-valid certificates.
 3.	A system of privilege-based access to certificate can be implemented, where only the allowed users can access the certificates.
 4.	For storing IPFS hashes in the blockchain, a more gas-efficient way (multihash) can be used.
+
+
+<h2>How to run:</h2>
+
+1. Clone the project
+
+    `git clone https://github.com/sacros/CertChain.git`
+
+2. Install dependencies
+
+    `npm install`
+
+3. Start [ganache](http://truffleframework.com/ganache/).
+
+4. Compile the contract
+
+    `truffle compile `
+
+5. Migrate the contract
+
+    `truffle migrate`
+
+6. Start vue app
+
+    `npm run start`
+
+7. Interact with the app on `localhost:8000`
